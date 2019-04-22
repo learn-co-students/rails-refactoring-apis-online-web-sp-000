@@ -8,7 +8,7 @@
 
 3. Move authentication from your controller to your service objects.
 
-4. Implement the `#initialize` method for your `GithubService` objects.
+4. Implement the `#initialize` method for your `GithubService` objects .
 
 5. Move the rest of your API calls into the `GithubService` object. Follow the path laid out in the tests, and get the application refactored and working. You will have to change the ERB file as well as your `#logged_in?` method.
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-refactoring-apis' title='Working with APIs'>Working with APIs</a> on Learn.co and start learning to code for free.</p>
