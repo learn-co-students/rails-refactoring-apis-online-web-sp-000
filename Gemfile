@@ -31,11 +31,12 @@ gem 'faraday'
 # Dot-env
 gem 'dotenv-rails'
 
+gem 'rack_session_access'
+
 #Testing
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'rack_session_access'
   gem 'webmock'
 end
 
