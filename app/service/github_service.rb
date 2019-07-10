@@ -9,14 +9,15 @@ class GithubService
 
   def authenticate!(client, secret, code)
     response = Faraday.post "https://github.com/login/oauth/access_token", 
-    {
-      client_id: client,
-      client_secret: secret,
-      code: code
-    }, 
-    {'Accept' => 'application/json'}
+      {
+        client_id: client,
+        client_secret: secret,
+        code: code
+      }, 
+      {'Accept' => 'application/json'}
     access_hash = JSON.parse(response.body)
     @access_token = access_hash["access_token"]
+    return access_hash["access_token"]
   end
 
   def get_username
@@ -36,6 +37,6 @@ class GithubService
   def create_repo(name)
     Faraday.post "https://api.github.com/user/repos",
       {name: name}.to_json,
-      {'Authorization' => "token #{@token}", 'Accept' => 'application/json'}
+      {'Authorization' => "token #{@access_token}", 'Accept' => 'application/json'}
   end
 end
