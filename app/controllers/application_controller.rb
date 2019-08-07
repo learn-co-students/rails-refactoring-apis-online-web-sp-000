@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   private
 
     def authenticate_user
-      GithubService.authenticate
+      @service = GithubService.new
+      session["access_token"] = @service.authenticate!(ENV["GITHUB_CLIENT"], ENV["GITHUB_SECRET"], "20")
     end
 
     def logged_in?

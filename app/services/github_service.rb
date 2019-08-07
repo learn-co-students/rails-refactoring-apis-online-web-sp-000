@@ -2,7 +2,7 @@ class GithubService
     attr_accessor :access_token
     def initialize(access_hash=nil)
 
-        if access_hash
+        if access_hash != nil
             @access_token = access_hash["access_token"]
         end
     end
@@ -20,13 +20,14 @@ class GithubService
     end
 
     def get_repos
-        response = Faraday.get "https://api.github.com/user/repos", {}, {'Authorization' => "token #{@access_token}", 'Accept' => 'application/json'}
+        response = Faraday.get "https://api.github.com/user/repos", {}, {'Authorization' => "token #{@access_token}"}
         repo_hashes = JSON.parse(response.body)
-        repo_hashes.collect{|hash| new GithubRepo(hash)}
-
+        repo_hashes.collect{|hash| GithubRepo.new(hash)}
     end
 
-    def create_repo
+    def create_repo(name)
+        url = "https://api.github.com/user/repos"
+        response = Faraday.post(url, {name: name}.to_json, {'Authorization' => "token #{@access_token}"})
     end
 
 end

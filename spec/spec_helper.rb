@@ -28,7 +28,7 @@ RSpec.configure do |config|
     stub_request(:post, "https://api.github.com/user/repos").
       with(:body => {"{\"name\":\"a-new-repo\"}"=>true},
       :headers => {'Authorization'=>'token 1'}).
-      to_return(:status => 201, :body => "", :headers => {})
+      to_return(:status => 200, :body => "", :headers => {})
   end
 end
 
