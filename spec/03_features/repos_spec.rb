@@ -29,9 +29,16 @@ describe "Features" do
     end
 
     it "creates a new repo", :type => :request do
-      stubbed = stub_request(:post, "https://api.github.com/user/repos").
-        with(body: {"name": "a-new-repo"}.to_json,
-        :headers => {'Authorization' => "token 1"})
+      stubbed =       stub_request(:post, "https://api.github.com/user/repos").
+      with(
+        body: {"{\"name\":\"a-new-repo\"}"=>nil},
+        headers: {
+       'Accept'=>'application/json',
+       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       'Authorization'=>'token',
+       'Content-Type'=>'application/x-www-form-urlencoded',
+       'User-Agent'=>'Faraday v0.15.4'
+        })
       visit root_path
       fill_in 'new-repo', with: 'a-new-repo'
       click_button 'Create'
