@@ -174,8 +174,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    spring (2.0.2)
-      activesupport (>= 4.2)
+    spring (1.7.2)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -214,7 +213,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  capybara
+  capybara (~> 3.13.2)
   coffee-rails (~> 4.1.0)
   dotenv-rails
   faraday
@@ -227,7 +226,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  spring
+  spring (~> 1.7.2)
   sqlite3 (~> 1.3.6)
   turbolinks
   uglifier (>= 1.3.0)
